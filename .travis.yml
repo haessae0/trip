@@ -28,6 +28,8 @@ deploy:
     acl: private
     local_dir: deploy
     wait-until-deploy: true
+    on:
+      all_branches: true
 
 notifications:
   email:

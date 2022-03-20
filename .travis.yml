@@ -13,6 +13,22 @@ cache:
 
 script: "./gradlew clean build"
 
+before_deploy:
+  - zip -r trip *
+  - mkdir -p deploy
+  - mv trip.zip deploy/trip.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: haessae0-webservice-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deploy: true
+
 notifications:
   email:
     recipients:

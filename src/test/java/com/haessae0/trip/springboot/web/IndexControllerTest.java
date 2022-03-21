@@ -21,6 +21,6 @@ public class IndexControllerTest {
     public void loaded_Main() {
         String body = this.restTemplate.getForObject("/", String.class);
 
-        assertThat(body).contains("webService");
+        assertThat(body).contains("GoAnyWhere");
     }
 }

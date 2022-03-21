@@ -31,6 +31,19 @@ deploy:
     on:
       all_branches: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: haessae0-webservice-build
+    key: trip.zip
+    bundle-ytpe: zip
+    application: webService
+    deployment_group: webService-group
+    region: ap-northeast-2
+    wait-until-deploy: true
+    on:
+      all_branches: true
+
 notifications:
   email:
     recipients:
